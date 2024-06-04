@@ -1,0 +1,17 @@
+.castList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.castItem {
+  margin: 10px 0;
+}
+
+.castName {
+  font-weight: bold;
+}
+
+.castCharacter {
+  font-style: italic;
+  color: #666;
+}

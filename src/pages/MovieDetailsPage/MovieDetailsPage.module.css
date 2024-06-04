@@ -1,0 +1,45 @@
+.container {
+  padding: 20px;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.overview {
+  margin: 20px 0;
+}
+
+.poster {
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.navLinks {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.link {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+}
+
+.link:hover {
+  color: #ff6347;
+}
+
+.backLink {
+  display: block;
+  margin-top: 20px;
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+}
+
+.backLink:hover {
+  color: #ff6347;
+}
