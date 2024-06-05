@@ -1,19 +1,17 @@
-import React, { useEffect, useState, Suspense } from "react";
-import {
-  useParams,
-  Link,
-  Route,
-  Routes,
-  useRouteMatch,
-} from "react-router-dom";
-import { fetchMovieDetails } from "../api";
+// src/pages/MovieDetailsPage.jsx
+import { useEffect, useState, Suspense, lazy } from "react";
+import { useParams, Link, Route, Routes, useNavigate } from "react-router-dom";
+import { fetchMovieDetails } from "../../api";
 import styles from "./MovieDetailsPage.module.css";
-const MovieCast = React.lazy(() => import("../components/MovieCast"));
-const MovieReviews = React.lazy(() => import("../components/MovieReviews"));
+
+const MovieCast = lazy(() => import("../../components/MovieCast/MovieCast"));
+const MovieReviews = lazy(() =>
+  import("../../components/MovieReviews/MovieReviews")
+);
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
-  const { path, url } = useRouteMatch();
+  const navigate = useNavigate();
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
@@ -34,22 +32,22 @@ const MovieDetailsPage = () => {
         className={styles.poster}
       />
       <div className={styles.navLinks}>
-        <Link to={`${url}/cast`} className={styles.link}>
+        <Link to="cast" className={styles.link}>
           Cast
         </Link>
-        <Link to={`${url}/reviews`} className={styles.link}>
+        <Link to="reviews" className={styles.link}>
           Reviews
         </Link>
       </div>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path={`${path}/cast`} component={<MovieCast />} />
-          <Route path={`${path}/reviews`} component={<MovieReviews />} />
+          <Route path="cast" element={<MovieCast />} />
+          <Route path="reviews" element={<MovieReviews />} />
         </Routes>
       </Suspense>
-      <Link to="/" className={styles.backLink}>
+      <button className={styles.backLink} onClick={() => navigate(-1)}>
         Go back
-      </Link>
+      </button>
     </div>
   );
 };
