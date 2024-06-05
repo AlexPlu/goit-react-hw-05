@@ -32,14 +32,25 @@
   color: #ff6347;
 }
 
-.backLink {
-  display: block;
-  margin-top: 20px;
+.backButton {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #ff6347;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
   text-decoration: none;
-  color: #333;
-  font-size: 18px;
 }
 
-.backLink:hover {
-  color: #ff6347;
+.backButton:hover {
+  background-color: #752517;
+}
+
+.backButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
 }

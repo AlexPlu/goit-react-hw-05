@@ -24,6 +24,9 @@ const MovieDetailsPage = () => {
 
   return (
     <div className={styles.container}>
+      <button className={styles.backButton} onClick={() => navigate(-1)}>
+        Go back
+      </button>
       <h1 className={styles.title}>{movie.title}</h1>
       <p className={styles.overview}>{movie.overview}</p>
       <img
@@ -45,9 +48,6 @@ const MovieDetailsPage = () => {
           <Route path="reviews" element={<MovieReviews />} />
         </Routes>
       </Suspense>
-      <button className={styles.backLink} onClick={() => navigate(-1)}>
-        Go back
-      </button>
     </div>
   );
 };
