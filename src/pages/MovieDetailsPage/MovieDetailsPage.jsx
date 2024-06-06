@@ -1,6 +1,13 @@
 // src/pages/MovieDetailsPage.jsx
-import { useEffect, useState, Suspense, lazy } from "react";
-import { useParams, Link, Route, Routes, useNavigate } from "react-router-dom";
+import { useEffect, useState, useRef, Suspense, lazy } from "react";
+import {
+  useParams,
+  Link,
+  Route,
+  Routes,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import { fetchMovieDetails } from "../../api";
 import styles from "./MovieDetailsPage.module.css";
 
@@ -12,7 +19,9 @@ const MovieReviews = lazy(() =>
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const [movie, setMovie] = useState(null);
+  const fromLocation = useRef(location.state?.from ?? "/movies");
 
   useEffect(() => {
     fetchMovieDetails(movieId).then((response) => setMovie(response.data));
@@ -24,7 +33,10 @@ const MovieDetailsPage = () => {
 
   return (
     <div className={styles.container}>
-      <button className={styles.backButton} onClick={() => navigate(-1)}>
+      <button
+        className={styles.backButton}
+        onClick={() => navigate(fromLocation.current)}
+      >
         Go back
       </button>
       <h1 className={styles.title}>{movie.title}</h1>
